@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     // Thay đổi kiểu dữ liệu của cột 'image' thành BLOB
     await queryInterface.changeColumn("Users", "image", {
-      type: Sequelize.BLOB,
+      type: Sequelize.BLOB("long"), // Hoặc Sequelize.BLOB('medium') tùy thuộc vào kích thước bạn cần
       allowNull: true, // Cho phép giá trị null (nếu cần)
     });
   },

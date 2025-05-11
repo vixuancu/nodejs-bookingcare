@@ -104,7 +104,7 @@ let createNewUser = async (data) => {
       gender: data.gender === "1" ? true : false, // Chuyển đổi giá trị giới tính thành boolean
       roleId: data.roleId,
       positionId: data.positionId,
-      // image: data.avatar
+      image: data.avatar ? data.avatar : null,
     });
     return {
       errCode: 0,
@@ -155,6 +155,7 @@ let updateUserData = async (data) => {
         gender: data.gender === "1" ? true : false, // Chuyển đổi giá trị giới tính thành boolean
         roleId: data.roleId,
         positionId: data.positionId,
+        image: data.avatar ? data.avatar : null,
       },
       {
         where: { id: data.id },

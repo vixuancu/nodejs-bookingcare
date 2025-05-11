@@ -9,11 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // định nghĩa quan hệ 1-n giữa Allcode và Role
+      Allcode.hasMany(models.User, {
+        foreignKey: "positionId",
+        as: "positionData",
+      });
+      Allcode.hasMany(models.User, {
+        foreignKey: "gender",
+        as: "genderData",
+      });
     }
   }
   Allcode.init(
     {
-      key: DataTypes.STRING,
+      keyMap: DataTypes.STRING,
       type: DataTypes.STRING,
       valueEn: DataTypes.STRING,
       valueVi: DataTypes.STRING,
