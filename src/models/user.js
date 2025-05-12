@@ -8,7 +8,22 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // định nghĩa quan hệ 1-n giữa User và Role
+      //
+      User.belongsTo(models.Allcode, {
+        foreignKey: "positionId",
+        targetKey: "keyMap",
+        as: "positionData",
+      });
+      User.belongsTo(models.Allcode, {
+        foreignKey: "gender",
+        targetKey: "keyMap",
+        as: "genderData",
+      });
+      // định nghĩa quan hệ User với Markdown quan hệ 1-1
+      User.hasOne(models.Markdown, {
+        foreignKey: "doctorId",
+        as: "doctorData",
+      });
     }
   }
   User.init(
